@@ -12,6 +12,8 @@ A rotten orange at index [i,j] can rot other fresh orange at indexes
                                                 in unit time. 
 */
 
+// I've tried a little different method from Striver's video , you can try that as well
+
 #include <iostream>
 #include <vector>
 #include<queue>
