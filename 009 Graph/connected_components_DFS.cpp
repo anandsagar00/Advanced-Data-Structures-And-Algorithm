@@ -89,8 +89,8 @@ int main()
     {
         if(!visited[i])
         {
+            //this function will get the current component and we will push it to components 2d-vector
             getConnectedCompDFS(adj,visited,currentComponent,i);
-
             components.push_back(currentComponent);
 
             currentComponent.clear();
