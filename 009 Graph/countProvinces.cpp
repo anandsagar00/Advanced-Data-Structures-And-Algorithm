@@ -24,7 +24,7 @@ as there are 4 provinces in the graph
 #include<queue>
 using namespace std;
 
-void getConnectedCompBFS(vector<vector<int> > &adj,vector<int> &visited,vector<int> &currComp,int i)
+void BFS(vector<vector<int> > &adj,vector<int> &visited,int i)
 {
     //this function will perform BFS starting from a gien node i
     queue<int> q;
@@ -40,8 +40,6 @@ void getConnectedCompBFS(vector<vector<int> > &adj,vector<int> &visited,vector<i
         {
             //first mark node as visited
             visited[node]=1;
-
-            currComp.push_back(node);
 
             for(auto &nodes:adj[node])
             {
@@ -92,19 +90,16 @@ int main()
     }
 
     vector<int> visited(n,0);//this will store the status whether the node has been visited or not
-    vector<int> currentComponent; //this will store current component in current DFS
-    vector<vector<int> > components; // this will store all components
 
+    int count=0;
     for(int i=0;i<n;i++)
     {
         if(!visited[i])
         {
-            //this function will get the current component and we will push it to components 2d-vector
-            getConnectedCompBFS(adj,visited,currentComponent,i);
-            components.push_back(currentComponent);
-
-            currentComponent.clear();
+            //this function will do BFS starting from current node
+            BFS(adj,visited,i);
+            count++;
         }
     }
-    cout<<components.size()<<"\n";
+    cout<<count<<"\n";
 }
