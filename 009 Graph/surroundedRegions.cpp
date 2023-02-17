@@ -67,6 +67,11 @@ int main()
     in the new array
     */
 
+   /*
+   There is an alternate approach also , create a visited array and start doing DFS from boundary O's only
+   and at last mark all un-visited cells in visited array as X 
+   */
+
     vector<vector<char> > ans(r,vector<char>(c,'X'));
 
     //Now I will be traversing on all four boundaries 
