@@ -53,8 +53,6 @@ void DFS(vector<vector<int> > &arr,int i,int j,string &path_taken,char direction
 
 string DFS(vector<vector<int> > &arr,int i,int j)
 {
-    //I have used a direction variable to tell in next step from which dir I am coming
-    //Since I am having a variable path_taken by reference 
     int r=arr.size();
     int c=arr[0].size();
 
