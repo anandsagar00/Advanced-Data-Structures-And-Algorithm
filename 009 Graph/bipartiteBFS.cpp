@@ -71,6 +71,11 @@ int main()
     
     bool isBipartite=true;
 
+    /*
+    IMP : Declaring color and visited array in main 
+    (any function which will call checkBipartite again and again) is very imp as it will check for all componets of graph
+    and when you declare color array everytime in checkBipartite function it consumes a lot of time
+    */
     vector<int> visited(n,0);
     vector<int> color(n,-1);//this will stor the colors assigned to each node , -1 uncolored , 1 color1,2 color2
     //initially all nodes will be un-colored
