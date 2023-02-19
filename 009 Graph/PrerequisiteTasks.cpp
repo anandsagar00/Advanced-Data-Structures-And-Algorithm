@@ -14,6 +14,11 @@ find if it is possible to finish all tasks.
 //TOPOLOGICAL SORT is the solution , if TOPO sort can be done then it's okay , otherwise not
 // or detect cycle any method
 
+/*
+There is one more question very similar to this : https://practice.geeksforgeeks.org/problems/course-schedule/1
+It not only asks whether jobs can be done or not but also , the order
+*/
+
 #include <iostream>
 #include <vector>
 #include <queue>
