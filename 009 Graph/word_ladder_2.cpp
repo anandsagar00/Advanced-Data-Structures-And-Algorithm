@@ -1,4 +1,4 @@
-//Context : https://youtu.be/DREutrv2XD0?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
+// Context : https://youtu.be/DREutrv2XD0?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
 
 // Proble link : https://practice.geeksforgeeks.org/problems/word-ladder-ii/1
 
@@ -17,17 +17,6 @@ Return an empty list if there is no such transformation sequence.
 */
 
 /*
-5
-cccc
-caab
-aacc
-baca
-abca
-cbcb
-baca
-*/
-
-/*
 Input:
 startWord = "der", targetWord = "dfs",
 wordList = {"des","der","dfr","dgt","dfs"}
@@ -42,105 +31,118 @@ to targetWord:-
 "der" -> "dfr" -> "dfs".
 */
 
-
 #include <iostream>
 #include <vector>
 #include <queue>
-#include<stack>
-#include<algorithm>
-#include<map>
-#include<unordered_map>
+#include <stack>
+#include <algorithm>
+#include <map>
+#include <unordered_map>
 #include <utility>
 #include <set>
 using namespace std;
 
-//This is a brute force approach and yet it passes all the TCs on GFG
+// This is a brute force approach and yet it passes all the TCs on GFG
 
-vector<vector<string> > wordLadder(string &startWord, string &targetWord, vector<string> &wordList)
+vector<vector<string>> findSequences(string &startWord, string &targetWord, vector<string> &wordList)
 {
-    //First I'll create an unordered_map of wordList so that it gives me O(1) acces time 
-   // I will be using this unordered map also to check if I have visited it or not
-    
-    unordered_map<string,int> ump;
+    // First I'll create an unordered_map of wordList so that it gives me O(1) acces time
+    // I will be using this unordered map also to check if I have visited it or not
 
-    //this loop will insert each word into ump with 0 as value , this time I'll not be using this as visited
-    // instead I will be checking inside sequence array only for visited 
-    for(auto &it:wordList)
-    ump[it]++;
+    unordered_map<string, int> ump;
 
-    //This will store the answer
-    vector<vector<string> > ans;
+    // this loop will insert each word into ump with 0 as value
+    for (auto &it : wordList)
+        ump[it] = 0;
+
+    // This will store the answer
+    vector<vector<string>> ans;
 
     // This time the queue will be different , instead of storing one string and step , we will store list of string
 
-    queue<vector<string> > q;
+    queue<vector<string>> q;
 
     vector<string> temp;
     temp.push_back(startWord);
-    
+
+    ump[startWord] = 1;
+
     q.push(temp);
 
-    while(!q.empty())
+    while (!q.empty())
     {
-        vector<string> sequence=q.front();
-        q.pop();
+        // I will create a vector which would store all words to be marked as visited on this level
+        vector<string> to_be_erased;
 
-        string last_word=sequence.back();
-
-        //if the last word is the target word then we will push sequence to ans
-        if(last_word==targetWord)
+        int s = q.size();
+        
+        //I will be storing all the words to be erased after this level finishes
+        for (int t = 1; t <= s; t++)
         {
-            if(ans.size()==0)
-            ans.push_back(sequence);
-            else if(ans.size()!=0 && ans[0].size()==sequence.size())
-            {
-                ans.push_back(sequence);
-            }
-            continue; //continuing as the first one we meet will be smallest and we don't need further processing on that
-        }
+            vector<string> sequence = q.front();
+            q.pop();
 
-        // I will try to change each letter at each index from 'a' - 'z' and will push it to the queue
-       // only if it is present in the ump and has not been visited yet
+            string last_word = sequence.back();
 
-        for(int i=0;i<last_word.length();i++)
-        {
-            char orig_ch=last_word[i];//this is storing the original char
-            for(char j='a';j<='z';j++)
+            // if the last word is the target word then we will push sequence to ans
+            if (last_word == targetWord)
             {
-                last_word[i]=j;
-                //this is checking if last word is there in word list and it is not in current sequence
-                if(ump[last_word] && (sequence.empty()||find(sequence.begin(),sequence.end(),last_word)==sequence.end()))
+                if (ans.size() == 0)
+                    ans.push_back(sequence);
+                else if (ans.size() != 0 && ans[0].size() == sequence.size())
                 {
-                    sequence.push_back(last_word);
-                    q.push(sequence); //inserting sequence into queue and popping back for next use
-                    sequence.pop_back();
+                    ans.push_back(sequence);
                 }
+                continue; // continuing as the first one we meet will be smallest and we don't need further processing on that
             }
-            last_word[i]=orig_ch;//I am putting back the original character , so that next letters can be replaced , without affecting the previous letters
+
+            // I will try to change each letter at each index from 'a' - 'z' and will push it to the queue
+            // only if it is present in the ump and has not been visited yet
+            for (int i = 0; i < last_word.length(); i++)
+            {
+                char orig_ch = last_word[i]; // this is storing the original char
+                for (char j = 'a'; j <= 'z'; j++)
+                {
+                    last_word[i] = j;
+                    // this is checking if last word is there in word list and it is not in current sequence
+                    if (ump.find(last_word) != ump.end() && ump[last_word] == 0)
+                    {
+                        to_be_erased.push_back(last_word);
+                        sequence.push_back(last_word);
+                        q.push(sequence); // inserting sequence into queue and popping back for next use
+                        sequence.pop_back();
+                    }
+                }
+                last_word[i] = orig_ch; // I am putting back the original character , so that next letters can be replaced , without affecting the previous letters
+            }
         }
+        for (auto &it : to_be_erased)
+            ump[it] = 1;
     }
     return ans;
 }
 
 int main()
 {
+    // The previous commit has a solution which has TLE but it is correct and simple
+    // The current one passes all the TCs
     int n;
     vector<string> word_list(n);
-    cin>>n;
+    cin >> n;
 
-    for(int i=0;i<n;i++)
+    for (int i = 0; i < n; i++)
     {
-        cin>>word_list[i];
+        cin >> word_list[i];
     }
-    string start_word,target_word;
-    cin>>start_word>>target_word;
-    
-    vector<vector<string> > ans=wordLadder(start_word,target_word,word_list);
+    string start_word, target_word;
+    cin >> start_word >> target_word;
 
-    for(auto &v:ans)
+    vector<vector<string>> ans = findSequences(start_word, target_word, word_list);
+
+    for (auto &v : ans)
     {
-        for(auto &nums:v)
-        cout<<nums<<" ";
-        cout<<"\n";
+        for (auto &nums : v)
+            cout << nums << " ";
+        cout << "\n";
     }
 }
