@@ -66,6 +66,10 @@ int wordLadderLength(string &startWord, string &targetWord, vector<string> &word
         int step=q.front().second;
         q.pop();
 
+        /*
+        The code can further be optimised , instead of returning from here 
+        I can return the moment word is formed as target word
+        */
         if(word==targetWord)
         return step;
 
