@@ -29,8 +29,10 @@ int shortest_path_k_stops(vector<vector<pair<int,int> > > &arr,int src,int dest,
     //Now I will be using a queue
    // which will have distance till now , NODE and total nodes from SRC to DEST(which has to be at max k-2)
 
-//  [Note : I used a queue not a PQ as PQ becomes greedy and doesn't try all possible combinations]
-//  where as queue tries have all combinations ( https://youtu.be/3dINsjyfooY?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn )
+    /*
+    I used a queue not a PQ as PQ becomes greedy takes only the minimum out , now what happens...
+    a cost which might be low now , might turn high at the end , as we are considering K stops as well
+    */
 
    queue<vector<int> > pq;
 
