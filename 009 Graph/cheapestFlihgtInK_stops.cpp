@@ -31,7 +31,9 @@ int shortest_path_k_stops(vector<vector<pair<int,int> > > &arr,int src,int dest,
 
     /*
     I used a queue not a PQ as PQ becomes greedy takes only the minimum out , now what happens...
-    a cost which might be low now , might turn high at the end , as we are considering K stops as well
+    we may reach an intermediate nor [not dest] in less than K stops , now that might be minimum as well
+    considering k stops to reach intermediate , but it will result in higher price when we want to reach dest
+    with K steps
     */
 
    queue<vector<int> > pq;
