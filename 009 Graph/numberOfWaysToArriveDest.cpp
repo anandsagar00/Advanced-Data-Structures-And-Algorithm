@@ -65,7 +65,7 @@ int main()
     int edges;
     cin>>edges;
 
-    //since this is a weighted graph so it'll have node as well as its weight in the adj list
+    //since this is a weighted graph so it'll have node as well as its weight in the adj list 
     vector<vector<pair<int,int> > > arr(n);
 
     for(int i=1;i<=edges;i++)
