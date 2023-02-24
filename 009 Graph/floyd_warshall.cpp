@@ -110,6 +110,7 @@ int main()
 
     for(int i=0;i<edg;i++)
     {
+        // I have taken example of UNDIRECTED GRAPH , you can modify this for DIRECTED as well
         int u,v,w;
         cin>>u>>v>>w;
         arr[u][v]=w;
