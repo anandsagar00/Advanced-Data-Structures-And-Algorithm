@@ -24,7 +24,7 @@ using namespace std;
 
 void floydWarshall(int **arr,int n)
 {
-    vector<vector<int> > distance(n,vector<int>(n));
+    vector<vector<int> > distance(n,vector<int>(n,INFINITY));
 
     //We will initialise the distance matrix same as the ADJ MAT
 
@@ -45,14 +45,21 @@ void floydWarshall(int **arr,int n)
             distance[i][j]=arr[i][j];
         }
     }
-
-    for(int i=0;i<n;i++)//this loop marks the source node
+    /*
+    The reason intermediate node loop is outside is that , if we keep it inside then we will use the wrong values of
+    intermediate node , i.e. the intermediate nodes would not be calculated and we would still be using it in our solution
+    */
+    for(int k=0;k<n;k++)//This is loop for intermediate node
     {
-        for(int j=0;j<n;j++)//this will be the dest node
+        for(int i=0;i<n;i++)//This is loop for source node
         {
-            for(int k=0;k<n;k++)//this is intermediate node
+            for(int j=0;j<n;j++)//this is loop for dest node
             {
-                //by this we make sure that we choose min of already existing path and path via intermediate node
+                // We are trying to find shortest path from i to j via k (i.e. i->k->j)
+
+                if(distance[i][k]==INFINITY || distance[k][j]==INFINITY)
+                continue;
+                else
                 distance[i][j]=min(distance[i][j],distance[i][k]+distance[k][j]);
             }
         }
@@ -98,10 +105,16 @@ int main()
     for(int i=0;i<n;i++)
     arr[i]=new int[n];
 
-    for(int i=0;i<n;i++)
+    int edg;
+    cin>>edg;
+
+    for(int i=0;i<edg;i++)
     {
-        for(int j=0;j<n;j++)
-        cin>>arr[i][j];
+        int u,v,w;
+        cin>>u>>v>>w;
+        arr[u][v]=w;
+        arr[v][u]=w;
     }
+
     floydWarshall(arr,n);
 }
