@@ -8,7 +8,7 @@ Go via every vertex/node ,ex : If I have 5 nodes and I have to go to node 2 from
 0->3->2
 0->4->2
 
-[ALL PAIR SHORTEST PATH ALG]
+[ALL PAIR SHORTEST PATH ALG] , [CAN WORK FOR BOTH DIRECTED AND UNDIRECTED GRAPH]
 
 Also helps us in detecting NEGATIVE CYCLES
 */
