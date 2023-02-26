@@ -4,7 +4,7 @@
 
 //This is not my code , this is a copy of Striver's exact code
 
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> 
 using namespace std;
 class DisjointSet {
     vector<int> rank, parent, size; 
