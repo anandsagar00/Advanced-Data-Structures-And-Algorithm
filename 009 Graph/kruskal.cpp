@@ -119,7 +119,7 @@ int main()
     cin >> n;
 
     int E; // number of edges
-
+    cin>>E;
     vector<vector<int> > edges; // I will be storing U,V,W in this vector
 
     for (int i = 0; i < E; i++)
