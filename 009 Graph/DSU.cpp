@@ -1,5 +1,7 @@
 // Context : https://youtu.be/aBxjDBC4M1U?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
 
+// Detail : https://takeuforward.org/data-structure/disjoint-set-union-by-rank-union-by-size-path-compression-g-46/
+
 #include <bits/stdc++.h>
 using namespace std;
 class DisjointSet {
