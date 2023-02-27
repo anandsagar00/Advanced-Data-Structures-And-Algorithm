@@ -13,6 +13,8 @@ If it is not possible to make the graph connected, return -1.
 
 // concept : Reusing the existing edge which form a cycle in one component to connect 2 components
 
+//PRE-REQUISITE : Disjoint Set Union Data Structure , Union by Rank (With Path compression)
+
 #include <iostream>
 #include <vector>
 #include <queue>
