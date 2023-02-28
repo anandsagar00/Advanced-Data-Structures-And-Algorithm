@@ -134,11 +134,6 @@ class Solution {
                                 DS.unionByRank(u,v);
                                 total_components-=1;//the moment we do union , then total components would decrease
                             }
-                            else
-                            {
-                                //If the parent of current and neighbouring cells not same then we will do the union but not increase the comp 
-                                DS.unionByRank(u,v);
-                            }
                         }
                     }
                     
