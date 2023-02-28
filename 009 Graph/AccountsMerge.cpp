@@ -1,18 +1,12 @@
-// Context : https://youtu.be/FMwpt_aQOGw?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
-
-// Problem Link : https://practice.geeksforgeeks.org/problems/account-merge/1
-
 #include <iostream>
-#include<vector>
-#include<set>
-#include<stack>
-#include<queue>
-#include<algorithm>
-#include<utility>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <algorithm>
+#include <set>
 #include<unordered_map>
 using namespace std;
 
-// This is a Disjoint Set Data-Structure class
 class DisjointSet
 {
     vector<int> parent; // this will store the parent of a node
@@ -81,7 +75,7 @@ public:
         // Assuming that the graph follows 0 based indexing , since array is of n+1 size so iterating from [0,n-1)
 
         for (int i = 0; i < parent.size()-1; i++)
-            st.insert(findUltimateParent(i));
+                st.insert(findUltimateParent(i));
 
         return st.size();
     }
@@ -115,32 +109,49 @@ class Solution{
         }
         
         int unique_count=DS.numberOfComponents();//This will tell us the total number of names we require
-
         vector<vector<string> > ans(unique_count);
+
+        unordered_map<int,int> find_index;//this unordered_map will map the name to the index of the answer vector
+
+        int index_in_ans=0;
+
+        //In this loop I would be mapping the ultimate parent of a node to its corresponding index in answer variable
+        for(int i=0;i<n;i++)
+        {
+            int ult_parent=DS.findUltimateParent(i);
+            if(find_index.find(ult_parent)==find_index.end())
+            {
+                find_index[ult_parent]=index_in_ans;
+                index_in_ans++;
+            }
+        }
+
+        //Now I will be filling the anwer array
 
         for(auto &it:ump)
         {
             string mail=it.first;
-            int name_index=it.second;
+            int name_node=it.second;
 
-            int ult_p=DS.findUltimateParent(name_index);//We will find ultimate parent of the name index and then insert into that position in ans variable
+            int ult_parent=DS.findUltimateParent(name_node);
 
-            if(ans[ult_p].size()==0)
+            int index_in_ans=find_index[ult_parent];
+
+            if(ans[index_in_ans].empty())
             {
-                //that means that the name has not yet been entered
-                ans[ult_p].push_back(accounts[ult_p][0]);//this will insert name into the ans 
+                //entering name in the ans array
+                ans[index_in_ans].push_back(accounts[ult_parent][0]);
             }
-
-            ans[ult_p].push_back(mail);
-
+            ans[index_in_ans].push_back(mail);
         }
-
+        
         //now the sorting part
         for(int i=0;i<unique_count;i++)
         sort(ans[i].begin()+1,ans[i].end());
         return ans;
     }
 };
+
 
 int main()
 {
