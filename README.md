@@ -1,4 +1,4 @@
-# Advanced-Data-Structures
+# Advanced-Data-Structures-And-Algorithms
 
 ### In this repository I will be putting solutions of Data-Structures and algorithms from 009 Graph onwards
 
