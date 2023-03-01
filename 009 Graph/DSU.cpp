@@ -4,7 +4,12 @@
 
 //This is not my code , this is a copy of Striver's exact code
 
-#include <bits/stdc++.h> 
+#include<iostream>
+#include<vector>
+#include<set>
+#include<algorithm>
+#include<utility>
+#include<unordered_map>
 using namespace std;
 class DisjointSet {
     vector<int> rank, parent, size; 
