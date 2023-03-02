@@ -40,7 +40,7 @@ public:
             {
                 lowest_discovery_time_neighbour[node]=min(lowest_discovery_time_neighbour[node],lowest_discovery_time_neighbour[neighbor]);
             }
-            else
+            else if(!visited[neighbor])
             {
                 time++;
                 lowest_discovery_time_neighbour[node]=min(DFS(neighbor,arr,visited,discovery_time,lowest_discovery_time_neighbour,node,time),lowest_discovery_time_neighbour[node]);
@@ -73,17 +73,19 @@ public:
 
         /*
         I will be iterating over each of the edges in graph and I will check ....
-        If I can reach the other end before the lowest discovery time of other node or not ,
-        If I can reach there before that means there is another path , If I can't then that is a bridge
-        */
+        If current node was discovered before the lowest discovery time of neighbour nodes then that is a bridge
 
-       vector<vector<int>> ans;//this will store all the bridges
+        If the lowest discovery time of neighbour is smaller than or equal to discovery time of current node
+        than that means that there is yet another path via which we can reach the other end of the eedge , hence not a bridge
+        */
+        
+        vector<vector<int>> ans;//this will store all the bridges
 
        for(auto &vec:connections)
        {
             int u=vec[0];
             int v=vec[1];
-            if(lowest_discovery_time_neighbour[u]<lowest_discovery_time_neighbour[v])
+            if(discovery_time[min(u,v)]<lowest_discovery_time_neighbour[max(u,v)])
             {
                 //This means I can't reach the node v apart from this edge
                 bridge_count++;
