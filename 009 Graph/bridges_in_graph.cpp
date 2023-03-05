@@ -72,7 +72,7 @@ public:
         int bridge_count=0;
 
         /*
-        I will be iterating over each of the edges in graph and I will check  ....
+        I will be iterating over each of the edges in graph and I will check ....
         If current node was discovered before the lowest discovery time of neighbour nodes then that is a bridge
 
         If the lowest discovery time of neighbour is smaller than or equal to discovery time of current node
