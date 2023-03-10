@@ -1,6 +1,8 @@
 //REFERENCE : https://takeuforward.org/data-structure/implement-trie-1/
 
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<string>
 using namespace std;
 
 #define endl "\n"
