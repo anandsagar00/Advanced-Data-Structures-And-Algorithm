@@ -91,6 +91,7 @@ class Trie
         }
     }
 
+    //This function will search is a word is present in Trie or not , i.e. if any word begins with given word or not
     bool search(Trie *trie,string key_word,int i=0)
     {
         if(trie==NULL || trie->end_of_word==true)
