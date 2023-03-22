@@ -1,6 +1,6 @@
 // Context : https://youtu.be/eQCS_v3bw0Q?list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9
 
-// Print sub-sequence with sum k the input array can have negative numbers as well
+// Print sub-sequence with sum k , the input array can have negative numbers as well
 
 #include<iostream>
 #include<vector>
