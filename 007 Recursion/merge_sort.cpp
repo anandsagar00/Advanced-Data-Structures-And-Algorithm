@@ -69,9 +69,9 @@ void mergeSort(int arr[],int low,int high,int n)
 
 int main()
 {
-    int arr[]={23,435,-32,238,0,45,13,-347,47,245,34,45998,237};
-    mergeSort(arr,0,12,13);
+    int arr[]={23,435,-32,238,0,45,-347,47,245,34,45998,237};
+    mergeSort(arr,0,11,12);
 
-    for(int i=0;i<13;i++)
+    for(int i=0;i<12;i++)
     cout<<arr[i]<<" ";
 }
