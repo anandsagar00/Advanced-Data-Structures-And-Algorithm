@@ -1,3 +1,5 @@
 # I will be following the playlist below :
 
 https://www.youtube.com/playlist?list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9
+
+I will not be doing comments in very basic questions as they are very clear 
