@@ -56,21 +56,21 @@ void merge(int arr[],int start,int end)
     }
 }
 
-void mergeSort(int arr[],int low,int high,int n)
+void mergeSort(int arr[],int low,int high)
 {
     if(low>=high)
     return;
 
     int mid=(low+high)/2;
-    mergeSort(arr,low,mid,n);
-    mergeSort(arr,mid+1,high,n);
+    mergeSort(arr,low,mid);
+    mergeSort(arr,mid+1,high);
     merge(arr,low,high);
 }
 
 int main()
 {
     int arr[]={23,435,-32,238,0,45,-347,47,245,34,45998,237};
-    mergeSort(arr,0,11,12);
+    mergeSort(arr,0,11);
 
     for(int i=0;i<12;i++)
     cout<<arr[i]<<" ";
