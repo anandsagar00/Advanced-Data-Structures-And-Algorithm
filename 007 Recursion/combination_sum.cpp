@@ -2,6 +2,7 @@
 
 // Problem Link : https://leetcode.com/problems/combination-sum/submissions/
 
+//This is direct LeetCode solution of the problem
 
 class Solution {
 public:
