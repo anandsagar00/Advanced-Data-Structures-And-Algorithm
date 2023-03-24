@@ -39,7 +39,8 @@ ll minCost(int i, vector<ll> &dp, vector<int> &heights)
         ll cost_steps2 = minCost(i - 2, dp, heights);
 
         // In this step I am taking minimum of cost till now + energy to jump 1 stair or stairs
-        return dp[i] = min<long>(cost_steps1 + abs(heights[i] - heights[i - 1]), cost_steps2 + abs(heights[i] - heights[i - 2]));
+        return dp[i] = min<long>(cost_steps1 + abs(heights[i] - heights[i - 1]),
+                                 cost_steps2 + abs(heights[i] - heights[i - 2]));
     }
 }
 
