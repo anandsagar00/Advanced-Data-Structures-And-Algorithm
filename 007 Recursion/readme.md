@@ -8,3 +8,4 @@ TODO :
 
 1. N-QUEEN
 2. SUDOKU SOLVER
+3. K-th permutation
