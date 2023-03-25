@@ -45,7 +45,7 @@ ll minCost(int i, vector<ll> &dp, vector<int> &heights)
         /*
         In case you are worried that height[i-2] may acces negative index and may result in Crashing of code
         then let me clarify that...
-        I am using vector so height[-ve index] will give zero and the cost_steps2 will give INT_MAX
+        I am using vector so height[-ve index] will give zero and the  cost_steps2 will give INT_MAX
         
         or 
 
