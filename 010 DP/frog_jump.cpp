@@ -33,7 +33,7 @@ ll minCost(int i, vector<ll> &dp, vector<int> &heights)
     else if (dp[i] != -1)
         return dp[i];
     else
-    {
+    { 
         // What is the cost till now when I take 1 step and when I take 2 steps
         ll cost_steps1 = minCost(i - 1, dp, heights);
         ll cost_steps2 = minCost(i - 2, dp, heights);
