@@ -1,4 +1,4 @@
-// Video : https://youtu.be/EgG3jsGoPvQ?list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY
+// Video :  https://youtu.be/EgG3jsGoPvQ?list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY
 
 // Problem Link 1 : https://atcoder.jp/contests/dp/tasks/dp_a
 
